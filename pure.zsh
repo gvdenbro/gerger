@@ -145,8 +145,6 @@ prompt_pure_preprompt_render() {
 	preprompt+="%(1j.%F{242}%j %f.)"
 	# show virtual env
 	preprompt+="%(12V.%F{242}%12v%f .)"
-	# begin with symbol, colored by previous command exit code
-	preprompt+="%F{$symbol_color}${PURE_PROMPT_SYMBOL:-❯}%f "
 	# directory, colored by vim status
 	preprompt+="%B%F{$STATUS_COLOR}$path_formatting%f%b"
 	# git info
@@ -157,6 +155,8 @@ prompt_pure_preprompt_render() {
 	preprompt+=$prompt_pure_username
 	# execution time
 	preprompt+="%B%F{242}${prompt_pure_cmd_exec_time}%f%b"
+	# end with symbol, colored by previous command exit code
+	preprompt+=" %F{$symbol_color}${PURE_PROMPT_SYMBOL:-❯}%f"
 
 	preprompt+=" "
 
